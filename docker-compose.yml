@@ -9,5 +9,6 @@ services:
       - ./:/mnt
       # - $HOME/.aws:/root/.aws
       - $PWD/:/home/jovyan/work 
+      - $PWD/:/notebooks
     ports:
       - '8888:8888'

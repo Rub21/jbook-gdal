@@ -12,6 +12,5 @@ alias jbook='docker run -it --rm -p 8888:8888 \
 --user root \
 -e AWS_PROFILE=devseed \
 --rm \
-jupyter/datascience-notebook:latest'
+rub21/jbook:v1'
 ```
-

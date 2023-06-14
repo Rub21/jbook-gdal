@@ -2,15 +2,16 @@ FROM osgeo/gdal:latest
 
 RUN apt update
 RUN apt install -y python3-pip
-RUN pip install notebook rasterio httpx Pillow awscli
-
-RUN pip install --upgrade jupyter_http_over_ws>=0.0.7 && \
-  jupyter serverextension enable --py jupyter_http_over_ws
-
-# Start Jupyter Lab
-CMD ["/bin/bash", "-c", "jupyter notebook \
-  --NotebookApp.allow_origin='https://colab.research.google.com' \
-  --port=8888 \
-  --NotebookApp.port_retries=0"]
-
-
+RUN pip install rasterio \
+    httpx \
+    Pillow \
+    awscli \
+    matplotlib \
+    jupyter \
+    jupyterlab \
+    scikit-image \
+    shapely \
+    pyproj
+WORKDIR /notebooks
+EXPOSE 8888
+ENTRYPOINT ["jupyter", "lab","--ip=0.0.0.0","--allow-root", "--notebook-dir=/home/jovyan"]
